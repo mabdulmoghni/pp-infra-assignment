@@ -3,11 +3,6 @@
 # Default Variables
 ################################################################################
 
-variable "profile" {
-  type    = string
-  default = "default"
-}
-
 variable "main-region" {
   type    = string
   default = "eu-west-1"

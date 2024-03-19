@@ -6,7 +6,6 @@ module "vpc" {
   source = "./modules/vpc"
 
   main-region = var.main-region
-  profile     = var.profile
 }
 
 ################################################################################
@@ -17,7 +16,6 @@ module "eks" {
   source = "./modules/eks-cluster"
 
   main-region = var.main-region
-  profile     = var.profile
   rolearn     = var.rolearn
 
   vpc_id          = module.vpc.vpc_id
@@ -45,10 +43,8 @@ module "aws_alb_controller" {
 # Database RDS
 ################################################################################
 module "rds" {
-  source = "./modules/rds"
-
+  source      = "./modules/rds"
   main-region = var.main-region
-  profile     = var.profile
   vpc_id      = module.vpc.vpc_id
   #vpc_cidr_block  = module.vpc.private_subnets_cidr_blocks
   private_subnets = module.vpc.private_subnets
